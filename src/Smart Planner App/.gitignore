@@ -1,0 +1,56 @@
+# Git Ignore for Smart Daily Planner
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build
+*.class
+*.jar
+*.zip
+*.tar.gz
+*.rar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test Coverage
+target/site/
+
+# User-specific
+*.cfg
+*.conf
+local.properties
+
+# Application Data
+data/
+*.db
+*.sqlite
+
+# Environment
+.env
+.env.local

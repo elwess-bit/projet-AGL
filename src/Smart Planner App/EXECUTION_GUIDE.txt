@@ -1,0 +1,140 @@
+GUIDE D'EXECUTION - SMART PLANNER APPLICATION
+==============================================
+
+PROBLEME RESOLU:
+- Erreur d'encodage UTF-8 corrigee dans Main.java
+- Tous les caracteres speciaux (✓, ✗, ═══, etc.) remplaces par du texte ASCII
+
+METHODE 1 : UTILISER LE SCRIPT POWERSHELL (RECOMMANDE)
+=====================================================
+
+1. Ouvrez PowerShell en tant qu'administrateur
+2. Naviguez dans le dossier du projet:
+   cd "C:\Users\alaem\Downloads\New folder\Smart Planner App"
+
+3. Executez le script de compilation et execution:
+   .\compile_and_run.ps1
+
+   OU si ca ne fonctionne pas:
+   powershell -ExecutionPolicy Bypass -File compile_and_run.ps1
+
+Le script va:
+- Creer les repertoires necessaires
+- Telecharger les dependances (SLF4J, Gson)
+- Compiler les fichiers Java avec UTF-8
+- Lancer le programme automatiquement
+
+
+METHODE 2 : UTILISER LE SCRIPT BATCH
+===================================
+
+1. Ouvrez Command Prompt (cmd.exe)
+2. Naviguez vers le projet:
+   cd "C:\Users\alaem\Downloads\New folder\Smart Planner App"
+
+3. Executez le script batch:
+   compile_and_run.bat
+
+Ce script va compiler et executer le programme.
+
+
+METHODE 3 : COMMANDES MANUELLES
+==============================
+
+1. Ouvrez PowerShell ou Command Prompt
+2. Naviguez vers le projet:
+   cd "C:\Users\alaem\Downloads\New folder\Smart Planner App"
+
+3. Creez les repertoires:
+   mkdir -Force target\classes
+
+4. Compilez les fichiers (Windows PowerShell):
+   $files = Get-ChildItem -Path src/main/java -Filter *.java -Recurse | Select-Object -ExpandProperty FullName
+   javac -encoding UTF-8 -d target/classes -sourcepath src/main/java $files
+
+   OU (Command Prompt):
+   javac -encoding UTF-8 -d target\classes -sourcepath src\main\java src\main\java\com\smartplanner\Main.java src\main\java\com\smartplanner\models\Statistique.java src\main\java\com\smartplanner\models\TableauBord.java ...
+
+5. Executez le programme:
+   java -cp target/classes com.smartplanner.Main
+
+   OU (Command Prompt):
+   java -cp target\classes com.smartplanner.Main
+
+
+COMMENT TESTER VOTRE PARTIE (TableauBord & Statistique) ?
+========================================================
+
+Une fois le programme execute:
+
+1. Choisissez "2" pour Login (ou "1" pour s'inscrire d'abord)
+2. Une fois connecte, choisissez "10" pour tester TableauBord et Statistique
+
+Vous verrez une serie de tests qui affichent:
+- Creation du TableauBord
+- Affichage de la vue Planning
+- Marquage de taches comme faites
+- Creation et affichage des Statistiques
+- Test des constructeurs et getters/setters
+- Historique des statistiques
+
+
+FICHIERS PRINCIPAUX
+==================
+
+src/main/java/com/smartplanner/
+├── Main.java                    <- Point d'entree, contient la methode main()
+├── models/
+│   ├── TableauBord.java        <- Votre classe (Membre 5)
+│   ├── Statistique.java        <- Votre classe (Membre 5)
+│   ├── Planning.java
+│   ├── Utilisateur.java
+│   └── ... (autres modeles)
+├── services/
+├── enums/
+└── utils/
+
+
+ERREURS POTENTIELLES ET SOLUTIONS
+================================
+
+Erreur: "Error: Could not find or load main class com.smartplanner.Main"
+Cause: Les fichiers n'ont pas ete compiles correctement
+Solution: Verifiez que le repertoire target/classes contient les fichiers .class
+
+Erreur: "invalid flag: --release"
+Cause: Version Java trop ancienne (< Java 9)
+Solution: Mettez a jour Java ou supprimez le flag --release du pom.xml
+
+Erreur: "Class not found"
+Cause: Le classpath n'inclut pas tous les fichiers
+Solution: Utilisez le script PowerShell qui gere le classpath automatiquement
+
+
+EN CAS DE PROBLEME
+==================
+
+1. Verifiez que Java est installe:
+   java -version
+
+2. Verifiez que vous êtes dans le bon repertoire:
+   cd "C:\Users\alaem\Downloads\New folder\Smart Planner App"
+
+3. Nettoyez et recomparez:
+   rm -r target/classes    (PowerShell)
+   rmdir /S target\classes (Command Prompt)
+   Puis relanchez la compilation
+
+4. Verifiez les fichiers .class:
+   ls target/classes/com/smartplanner/  (PowerShell)
+   dir target\classes\com\smartplanner\ (Command Prompt)
+
+
+FICHIERS MODIFIES
+================
+
+✓ Main.java - Suppression des caracteres UTF-8 speciaux, ajout du menu de test
+✓ TableauBord.java - Classe complete avec tous les champs et methodes
+✓ Statistique.java - Classe complete avec calcul du taux de completion
+
+Tous les fichiers sont maintenant ASCII-compatible et compilables.
