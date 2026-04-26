@@ -137,7 +137,7 @@ US#10 |	Statistiques de productivité	Should |	Alae
    **Tableau Kanban en fin de sprint**  *(avril 2026 – après avancement des US)*
    ![Tableau Kanban - Smart Daily Planner](https://github.com/elwess-bit/projet-AGL-Smart-Planner/blob/feature/dashboard-stats-Alae-Benelmekki-v3/consolid%C3%A9/captures/kanban/Screenshot%202026-04-26%20171511.png?raw=true)
     <img width="847" height="788" alt="tableau kanban" src="https://github.com/user-attachments/assets/ff98f13e-fb23-48b7-a8d2-2af90014c951" />
-
+    
 ##🔗 Liens
  **maquettes US7+8**
  
