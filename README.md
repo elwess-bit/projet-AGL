@@ -7,10 +7,15 @@ Smart Daily Planner aide les étudiants à organiser leurs tâches quotidiennes 
 
 ## 👥 Équipe :
 | Samar Dhouib | Product Owner + Dev | Inscription & Profil Utilisateur Intelligent | `feature/auth-profile` |
+
 | Maamoun Khedher | Scrum Master + Dev | Gestion des Tâches (CRUD) et priorités | `feature/task-manager` |
+
 | Ghofrane Fitouri | Développeur | Moteur d'Analyse Comportementale & Contraintes | `feature/behavior-engine` |
+
 | **Wissem Amiri** | **Développeur** | **Planificateur Intelligent** | **`feature/smart-scheduler`** |
+
 | Alae Benelmekki | Développeur | Tableau de Bord & Statistiques | `feature/dashboard-stats` |
+
 
 ## 🏗️ Architecture du projet :
 
