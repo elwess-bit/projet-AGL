@@ -1,4 +1,5 @@
 # projet-AGL
+<<<<<<< Updated upstream
 # Smart Daily Planner :
 Application de planification intelligente pour étudiants tunisiens.
 
@@ -131,3 +132,4 @@ US#10 |	Statistiques de productivité	Should |	Alae
   https://www.figma.com/make/y529Uz7jfAbSexyelnA4B6/G%C3%A9n%C3%A9rer-planning-optimis%C3%A9?t=UHYAbdlyFUSm5jur-1
   
   https://www.figma.com/make/nI2APRi7keTStrn2zhImoz/Ajustement-dynamique-du-planning?t=yNKn5RapGWn0AyUn-1
+
