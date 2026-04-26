@@ -60,7 +60,7 @@
 | ID | Description | Priorité | Story Points | Statut |
 |----|-------------|----------|--------------|--------|
 | **US#7** | Génération automatique du planning | Must | 8 | ✅ **Fait** |
-| **US#8** | Ajustement dynamique du planning | Could | 8 | ✅ **Fait** |
+| **US#8** | Ajustement dynamique du planning | Could | 2 | ✅ **Fait** |
 
 ---
 
