@@ -118,6 +118,12 @@ US#10 |	Statistiques de productivité	Should |	Alae
 
 
 ##📸 Captures d'écran
+  Maquettes Figma
+    <img width="1642" height="877" alt="image" src="https://github.com/user-attachments/assets/c6c4d6b7-1add-484e-a8ca-92e45a95ae2a" />
+    <img width="1548" height="855" alt="image" src="https://github.com/user-attachments/assets/2dfe8e57-4f2f-4947-a28c-d348d6c1995c" />
 
+
+  
+  Tableau Kanban
 
 ##🔗 Liens
