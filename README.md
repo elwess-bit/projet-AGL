@@ -122,10 +122,19 @@ US#10 |	Statistiques de productivité	Should |	Alae
   Maquettes Figma
     <img width="1642" height="877" alt="image" src="https://github.com/user-attachments/assets/c6c4d6b7-1add-484e-a8ca-92e45a95ae2a" />
     <img width="1548" height="855" alt="image" src="https://github.com/user-attachments/assets/2dfe8e57-4f2f-4947-a28c-d348d6c1995c" />
+    <img width="1148" height="743" alt="image" src="https://github.com/user-attachments/assets/4154fddd-5c53-43ec-9cb7-59557829d4a8" />
+    <img width="1106" height="709" alt="image" src="https://github.com/user-attachments/assets/f3bcc7a1-79ea-4d24-9847-29065798d2fe" />
+    <img width="1163" height="744" alt="image" src="https://github.com/user-attachments/assets/d28a7cd9-fb24-4b17-b6aa-083e43458651" />
+
+
+
+
+    
 
 
   
   Tableau Kanban
+    <img width="847" height="788" alt="tableau kanban" src="https://github.com/user-attachments/assets/ff98f13e-fb23-48b7-a8d2-2af90014c951" />
 
 ##🔗 Liens
 
