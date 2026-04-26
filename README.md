@@ -15,7 +15,7 @@ Smart Daily Planner aide les étudiants à organiser leurs tâches quotidiennes 
 
 | **Wissem Amiri** | **Développeur** | **Planificateur Intelligent** | **`feature/smart-scheduler`** |
 
-| Alae Benelmekki | Développeur | Tableau de Bord & Statistiques | `feature/dashboard-stats` |
+| **Alae Benelmekki** | **Développeur** | **Tableau de Bord & Statistiques** | **`feature/dashboard-stats`** |
 
 
 ## 🏗️ Architecture du projet :
@@ -125,15 +125,17 @@ US#10 |	Statistiques de productivité	Should |	Alae
     <img width="1148" height="743" alt="image" src="https://github.com/user-attachments/assets/4154fddd-5c53-43ec-9cb7-59557829d4a8" />
     <img width="1106" height="709" alt="image" src="https://github.com/user-attachments/assets/f3bcc7a1-79ea-4d24-9847-29065798d2fe" />
     <img width="1163" height="744" alt="image" src="https://github.com/user-attachments/assets/d28a7cd9-fb24-4b17-b6aa-083e43458651" />
+ 
 
 
 
 
     
-
-
   
-  Tableau Kanban
+  **Tableau Kanban au debut du sprint** *(avril 2026 – état initial des tâches)*
+   ![Tableau Kanban - Smart Daily Planner](https://github.com/elwess-bit/projet-AGL-Smart-Planner/blob/feature/dashboard-stats-Alae-Benelmekki-v3/consolid%C3%A9/captures/kanban/Screenshot%202026-04-19%20135658.png?raw=true)
+   **Tableau Kanban en fin de sprint**  *(avril 2026 – après avancement des US)*
+   ![Tableau Kanban - Smart Daily Planner](https://github.com/elwess-bit/projet-AGL-Smart-Planner/blob/feature/dashboard-stats-Alae-Benelmekki-v3/consolid%C3%A9/captures/kanban/Screenshot%202026-04-26%20171511.png?raw=true)
     <img width="847" height="788" alt="tableau kanban" src="https://github.com/user-attachments/assets/ff98f13e-fb23-48b7-a8d2-2af90014c951" />
 
 ##🔗 Liens
@@ -141,4 +143,8 @@ US#10 |	Statistiques de productivité	Should |	Alae
   https://www.figma.com/make/y529Uz7jfAbSexyelnA4B6/G%C3%A9n%C3%A9rer-planning-optimis%C3%A9?t=UHYAbdlyFUSm5jur-1
   
   https://www.figma.com/make/nI2APRi7keTStrn2zhImoz/Ajustement-dynamique-du-planning?t=yNKn5RapGWn0AyUn-1
-
+  
+  **maquettes US9+10**
+  
+  https://www.figma.com/make/Zk8oGlATWbgHgDEjkL7xkO/Visualisation-et-Statistiques-Planning?fullscreen=1&t=eDfW57i1KVFjYqZb-1
+ 
