@@ -61,17 +61,26 @@ smart-daily-planner/
 
 
 ## 📋 User Stories
-ID	Titre	Priorité	Points	Membre
 US#1 |	Création de compte utilisateur |	Must |	Samar
+
 US#2 |	Profil énergétique |	Should |	Samar
+
 US#3 |	Ajouter une tâche |	Must |	Maamoun
+
 US#4 |	Priorité d'une tâche |	Must |	Maamoun
+
 US#5 |	Créneaux de disponibilité |	Must |	Ghofrane
+
 US#6 |	Contraintes de transport |	Should |	Ghofrane
+
 US#7 |	Génération automatique du planning |	Must |	Wissem
+
 US#8 |	Ajustement dynamique du planning |	Could |	Wissem
+
 US#9 |	Visualisation du planning	Must |	Alae
+
 US#10 |	Statistiques de productivité	Should |	Alae
+
 
 ##📸 Captures d'écran
 
