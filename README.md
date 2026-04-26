@@ -139,6 +139,15 @@ US#10 |	Statistiques de productivité	Should |	Alae
     <img width="847" height="788" alt="tableau kanban" src="https://github.com/user-attachments/assets/ff98f13e-fb23-48b7-a8d2-2af90014c951" />
     
 ##🔗 Liens
+
+**maquette US1**
+
+https://www.figma.com/make/VHMAAibc9LcaFn6EHZk7sQ/Inscription-pour-Smart-Planner?p=f&t=M7TAWUKe0bfAG62K-0&fullscreen=1
+
+**maquette US2**
+
+https://www.figma.com/make/vsNfqKR8jKTH1dvf4IBTZw/Set-Default-Energy-Level?p=f&t=lLTARi6ES2GqGN2O-0&fullscreen=1
+
  **maquettes US7+8**
  
   https://www.figma.com/make/y529Uz7jfAbSexyelnA4B6/G%C3%A9n%C3%A9rer-planning-optimis%C3%A9?t=UHYAbdlyFUSm5jur-1
@@ -154,6 +163,7 @@ US#10 |	Statistiques de productivité	Should |	Alae
 https://www.figma.com/make/LqNhF2YKXSY8fF7GVXGwif/Ajouter-une-nouvelle-t%C3%A2che?t=biWX0apFaDepjPCv-1
 
 **maquettes US4**
+
 
 https://www.figma.com/make/ZXqKvkEUiTOvyCK2qE5vKA/Blog-app-with-character-limits?t=0RFmEJleV3ukPd3f-1
 
