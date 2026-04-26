@@ -20,43 +20,78 @@ Smart Daily Planner aide les étudiants à organiser leurs tâches quotidiennes 
 ## 🏗️ Architecture du projet :
 
 smart-daily-planner/
+
 ├── src/
+
 │ └── com/
+
 │ └── smartplanner/
+
 │ ├── models/ # Classes métier
+
 │ │ ├── Utilisateur.java
+
 │ │ ├── Preference.java
+
 │ │ ├── Tache.java
+
 │ │ ├── Disponibilite.java
+
 │ │ ├── Contrainte.java
+
 │ │ ├── Planning.java
+
 │ │ ├── ElementPlanning.java
+
 │ │ └── Notification.java
+
 │ ├── services/ # Logique métier
+
 │ │ ├── UserService.java
+
 │ │ ├── PreferenceService.java
+
 │ │ ├── TaskService.java
+
 │ │ ├── AvailabilityService.java
+
 │ │ ├── PlanningService.java
+
 │ │ └── NotificationService.java
+
 │ ├── enums/ # Énumérations
+
 │ │ ├── EnergyLevel.java
+
 │ │ ├── PriorityLevel.java
+
 │ │ ├── TaskType.java
+
 │ │ └── TimeSlotType.java
+
 │ └── Main.java # Point d'entrée
+
 ├── docs/
+
 │ │ └── Rapport-de-projet.pdf
+
 ├── consolidé/
+
 │ ├── captures/ # Captures d'écran
+
 │ │ └── kanban/ # Captures Jira/Trello
+
 │ │ └── maquettes/ # Exports Figma
+
 │ │ └── reviews
 
+
 ├── diagrammes/
+
 │ └── diagrammes/ # UML (PlantUML)
 
 ├── README.md
+
 └── .gitignore
 
 
