@@ -1,135 +1,86 @@
-# projet-AGL
-<<<<<<< Updated upstream
-# Smart Daily Planner :
-Application de planification intelligente pour étudiants tunisiens.
+# 🎯 Tableau de bord & Statistiques – Alae Benelmekki
 
-## 📌 Pitch :
-Smart Daily Planner aide les étudiants à organiser leurs tâches quotidiennes en générant automatiquement un emploi du temps optimisé. L'application prend en compte les créneaux de disponibilité, les priorités des tâches, le niveau d'énergie et les contraintes de transport. Ajustement dynamique en cas d'imprévu.
+## 👤 Mon rôle dans l’équipe
 
-## 👥 Équipe :
-| Samar Dhouib | Product Owner + Dev | Inscription & Profil Utilisateur Intelligent | `feature/auth-profile` |
+- **Développeur** – responsable de la fonctionnalité **Tableau de bord & Statistiques** (US#9 et US#10)
+- Participation active à toutes les cérémonies Scrum (Daily, Sprint Planning, Review, Rétrospective)
+- Collaboration avec le Product Owner et le Scrum Master pour affiner le backlog
 
-| Maamoun Khedher | Scrum Master + Dev | Gestion des Tâches (CRUD) et priorités | `feature/task-manager` |
+---
 
-| Ghofrane Fitouri | Développeur | Moteur d'Analyse Comportementale & Contraintes | `feature/behavior-engine` |
+## 🧱 Ce que j’ai fait (travail complet)
 
-| **Wissem Amiri** | **Développeur** | **Planificateur Intelligent** | **`feature/smart-scheduler`** |
+### 1. 📋 Organisation du projet (dès le début)
 
-| Alae Benelmekki | Développeur | Tableau de Bord & Statistiques | `feature/dashboard-stats` |
+- **Création et rédaction du Product Backlog** (avec toute l'équipe) – 10 User Stories au total
+- Écriture de mes **2 User Stories** (US#9 et US#10) avec :
+  - Priorité MoSCoW
+  - Critères d'acceptation (3 par US)
+  - Estimation en Story Points (Fibonacci)
+- Participation à la priorisation globale du backlog
+- Aide à la création du **Sprint Backlog** (Sprint 1 et Sprint 2)
+- Utilisation de **Jira** pour le suivi des tâches (captures fournies dans le rapport)
+- Rédaction de ma partie dans le **rapport final** (bilan individuel, documentation des prompts IA)
 
+### 2. 🎨 Conception (Figma)
 
-## 🏗️ Architecture du projet :
+- Création de **3 écrans Figma** pour ma fonctionnalité :
+  - `us9.png` – vue principale du planning
+  - `us9-2.png` – planning détaillé (heure par heure)
+  - `us10.png` – statistiques et barre de progression
+- Lien Figma partagé avec l'équipe et intégré dans le README
 
-smart-daily-planner/
+### 3. 💻 Développement (Java)
 
-├── src/
+- Création des classes :
+  - `TableauBord.java` – affichage planning et dashboard
+  - `Statistique.java` – calcul et affichage des stats
+  - `ElementPlanning.java` – gestion des éléments du planning
+- Modification du `Main.java` pour intégrer :
+  - Menu unifié (option `1` = tableau de bord complet)
+  - Affichage coloré (ANSI) avec barre de progression
+- Implémentation de la formule :  
+  `tauxCompletion = (tâchesTerminées / totalTâches) × 100`  
+  avec gestion du cas `totalTâches = 0`
+- Documentation des **prompts IA** utilisés (dans le rapport)
 
-│ └── com/
+### 4. 🗃️ Gestion de version (Git & GitHub)
 
-│ └── smartplanner/
+- Création de ma branche : `feature/dashboard-stats-Alae-Benelmekki-v3`
+- Commits réguliers (9+ commits visibles sur GitHub)
+- Pull Request vers `Smart-Planner` (fusionnée après review)
+- Ajout des maquettes dans `consolidé/captures/maquettes/`
+- README spécifique à ma branche
 
-│ ├── models/ # Classes métier
+### 5. 🧪 Tests & qualité
 
-│ │ ├── Utilisateur.java
+- Test manuel de toutes les options du dashboard
+- Vérification du calcul du taux de complétion (cas normaux et limites)
+- Gestion des erreurs (division par zéro, fichiers manquants)
 
-│ │ ├── Preference.java
+---
 
-│ │ ├── Tache.java
+## 📊 Résumé des User Stories implémentées
 
-│ │ ├── Disponibilite.java
+| ID | Description | Priorité | Story Points | Statut |
+|----|-------------|----------|--------------|--------|
+| **US#9** | Visualisation du planning | Must | 3 | ✅ **Fait** |
+| **US#10** | Statistiques de productivité | Should | 5 | ✅ **Fait** |
 
-│ │ ├── Contrainte.java
+---
 
-│ │ ├── Planning.java
+## 📁 Fichiers livrés (dans ma branche)
 
-│ │ ├── ElementPlanning.java
+---
 
-│ │ └── Notification.java
+## ✅ Ce que j’ai appris
 
-│ ├── services/ # Logique métier
+- Travailler en équipe avec Git (branches, PR, revues)
+- Utiliser Jira pour le suivi agile
+- Concevoir des maquettes Figma et les intégrer au projet
+- Coder en Java avec une approche hybride (AGL + IA)
+- Rédiger un rapport professionnel
 
-│ │ ├── UserService.java
+---
 
-│ │ ├── PreferenceService.java
-
-│ │ ├── TaskService.java
-
-│ │ ├── AvailabilityService.java
-
-│ │ ├── PlanningService.java
-
-│ │ └── NotificationService.java
-
-│ ├── enums/ # Énumérations
-
-│ │ ├── EnergyLevel.java
-
-│ │ ├── PriorityLevel.java
-
-│ │ ├── TaskType.java
-
-│ │ └── TimeSlotType.java
-
-│ └── Main.java # Point d'entrée
-
-├── docs/
-
-│ │ └── Rapport-de-projet.pdf
-
-├── consolidé/
-
-│ ├── captures/ # Captures d'écran
-
-│ │ └── kanban/ # Captures Jira/Trello
-
-│ │ └── maquettes/ # Exports Figma
-
-│ │ └── reviews
-
-
-├── diagrammes/
-
-│ └── diagrammes/ # UML (PlantUML)
-
-├── README.md
-
-└── .gitignore
-
-
-## 📋 User Stories
-US#1 |	Création de compte utilisateur |	Must |	Samar
-
-US#2 |	Profil énergétique |	Should |	Samar
-
-US#3 |	Ajouter une tâche |	Must |	Maamoun
-
-US#4 |	Priorité d'une tâche |	Must |	Maamoun
-
-US#5 |	Créneaux de disponibilité |	Must |	Ghofrane
-
-US#6 |	Contraintes de transport |	Should |	Ghofrane
-
-US#7 |	Génération automatique du planning |	Must |	Wissem
-
-US#8 |	Ajustement dynamique du planning |	Could |	Wissem
-
-US#9 |	Visualisation du planning	Must |	Alae
-
-US#10 |	Statistiques de productivité	Should |	Alae
-
-
-##📸 Captures d'écran
-  Maquettes Figma
-    <img width="1642" height="877" alt="image" src="https://github.com/user-attachments/assets/c6c4d6b7-1add-484e-a8ca-92e45a95ae2a" />
-    <img width="1548" height="855" alt="image" src="https://github.com/user-attachments/assets/2dfe8e57-4f2f-4947-a28c-d348d6c1995c" />
-
-
-  
-  Tableau Kanban
-
-##🔗 Liens
-
-  https://www.figma.com/make/y529Uz7jfAbSexyelnA4B6/G%C3%A9n%C3%A9rer-planning-optimis%C3%A9?t=UHYAbdlyFUSm5jur-1
-  
-  https://www.figma.com/make/nI2APRi7keTStrn2zhImoz/Ajustement-dynamique-du-planning?t=yNKn5RapGWn0AyUn-1
-
+> 🚀 *Grâce à ce travail, l'utilisateur peut suivre sa productivité et organiser son temps efficacement.*
