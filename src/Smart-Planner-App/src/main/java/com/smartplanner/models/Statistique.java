@@ -54,6 +54,27 @@ public class Statistique {
         System.out.println("Nombre total de tâches : " + nbTachesTotal);
         System.out.println("Nombre de tâches complétées : " + nbTachesCompletees);
         System.out.println("Taux de completion : " + String.format("%.2f", tauxCompletion) + "%");
+        System.out.println("Progression : " + construireBarreProgression(tauxCompletion) + " " + String.format("%.0f", tauxCompletion) + "%");
+    }
+
+    /**
+     * Construit une barre de progression visuelle à partir du taux de completion
+     */
+    private String construireBarreProgression(double pourcentage) {
+        int longueurBarre = 6;
+        int remplissage = (int) Math.round((pourcentage / 100.0) * longueurBarre);
+        remplissage = Math.max(0, Math.min(remplissage, longueurBarre));
+
+        StringBuilder barre = new StringBuilder();
+        barre.append('[');
+        for (int i = 0; i < remplissage; i++) {
+            barre.append('█');
+        }
+        for (int i = remplissage; i < longueurBarre; i++) {
+            barre.append('░');
+        }
+        barre.append(']');
+        return barre.toString();
     }
 
     // Getters et Setters

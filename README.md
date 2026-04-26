@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # 🎯 Tableau de bord & Statistiques – Alae Benelmekki
 
 ## 👤 Mon rôle dans l’équipe
@@ -84,3 +85,8 @@
 ---
 
 > 🚀 *Grâce à ce travail, l'utilisateur peut suivre sa productivité et organiser son temps efficacement.*
+=======
+# projet-AGL
+This Is Our Project AGL
+gggg
+>>>>>>> Stashed changes
