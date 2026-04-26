@@ -157,3 +157,6 @@ https://www.figma.com/make/LqNhF2YKXSY8fF7GVXGwif/Ajouter-une-nouvelle-t%C3%A2ch
 
 https://www.figma.com/make/ZXqKvkEUiTOvyCK2qE5vKA/Blog-app-with-character-limits?t=0RFmEJleV3ukPd3f-1
 
+**maquettes US9**
+
+https://www.figma.com/make/9sSB3LlxKu9aHuvacUjGGV/Create-Preferences-Screen-Mockup?t=g1tO6SljfHgyMvGG-1
