@@ -4,10 +4,12 @@ import com.smartplanner.enums.PriorityLevel;
 import com.smartplanner.enums.TaskType;
 import com.smartplanner.enums.TimeSlotType;
 import com.smartplanner.models.*;
+import com.smartplanner.services.QRCodeService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ import java.util.Scanner;
  * Main entry point for the Smart Daily Planner application
  */
 public class Main {
-    // Codes de couleur ANSI pour terminal PRO
+    // ANSI color codes for terminal
     private static final String RESET = "\u001B[0m";
     private static final String ROUGE = "\u001B[31m";
     private static final String VERT = "\u001B[32m";
@@ -24,24 +26,22 @@ public class Main {
     private static final String VIOLET = "\u001B[35m";
     private static final String CYAN = "\u001B[36m";
     private static final String BLANC = "\u001B[37m";
-    private static final String FOND_VERT = "\u001B[42m";
-    private static final String FOND_ROUGE = "\u001B[41m";
-    private static final String FOND_JAUNE = "\u001B[43m";
     private static final String GRAS = "\u001B[1m";
-    private static final String SOULIGNE = "\u001B[4m";
 
     private static SmartPlannerApplication app;
     private static Scanner scanner;
     private static String currentUserId;
+    private static QRCodeService qrCodeService;
 
     public static void main(String[] args) {
         app = new SmartPlannerApplication();
         scanner = new Scanner(System.in);
+        qrCodeService = new QRCodeService();
 
-        System.out.println("\n============================================================================");
-        System.out.println("                        SMART DAILY PLANNER                           ");
-        System.out.println("              Planificateur Intelligent pour Étudiants Tunisiens            ");
-        System.out.println("============================================================================\n");
+        System.out.println("\n" + CYAN + GRAS + "============================================================================" + RESET);
+        System.out.println(CYAN + GRAS + "                        SMART DAILY PLANNER                           " + RESET);
+        System.out.println(CYAN + "              Planificateur Intelligent pour Étudiants Tunisiens            " + RESET);
+        System.out.println(CYAN + "============================================================================\n" + RESET);
 
         boolean running = true;
         while (running) {
@@ -60,13 +60,13 @@ public class Main {
             }
         }
 
-        System.out.println("\n[OK] Merci d'avoir utilisé Smart Daily Planner. Au revoir !\n");
+        System.out.println("\n" + VERT + "[✓] Merci d'avoir utilisé Smart Daily Planner. Au revoir !\n" + RESET);
         scanner.close();
     }
 
     private static void afficherMenuPrincipal() {
         System.out.println("\n" + CYAN + "========================" + RESET);
-        System.out.println(CYAN + "    🧭 MENU PRINCIPAL" + RESET);
+        System.out.println(CYAN + GRAS + "    🧭 MENU PRINCIPAL" + RESET);
         System.out.println(CYAN + "========================" + RESET);
         System.out.println(BLANC + "1." + RESET + " " + VERT + "Inscrire un nouvel utilisateur" + RESET);
         System.out.println(BLANC + "2." + RESET + " " + JAUNE + "Se connecter" + RESET);
@@ -85,24 +85,28 @@ public class Main {
             case "3":
                 return false;
             default:
-                System.out.println("[ERREUR] Choix invalide. Veuillez réessayer.");
+                System.out.println(ROUGE + "[✗] Choix invalide. Veuillez réessayer." + RESET);
         }
         return true;
     }
 
     private static void afficherMenuUtilisateur() {
-        System.out.println("\n--- MENU UTILISATEUR ---");
-        System.out.println("1. 📊 TABLEAU DE BORD COMPLET (statistiques + planning + notifications)");
-        System.out.println("2. ➕ Ajouter une tâche");
-        System.out.println("3. 📅 Ajouter une disponibilité");
-        System.out.println("4. ⚠️ Ajouter une contrainte");
-        System.out.println("5. 🚀 Générer le planning");
-        System.out.println("6. 👁️ Voir le planning");
-        System.out.println("7. 🔔 Voir les notifications");
-        System.out.println("8. ⚙️ Gérer les préférences");
-        System.out.println("9. 🚗 Signaler un retard de transport");
-        System.out.println("0. 🔌 Se déconnecter");
-        System.out.print("Choix : ");
+        System.out.println("\n" + VIOLET + GRAS + "╔════════════════════════════════════════╗" + RESET);
+        System.out.println(VIOLET + GRAS + "║        👤 MENU UTILISATEUR               ║" + RESET);
+        System.out.println(VIOLET + GRAS + "╠════════════════════════════════════════╣" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "1. " + CYAN + "📊 TABLEAU DE BORD COMPLET" + RESET + VIOLET + "             ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "2. " + VERT + "➕ Ajouter une tâche" + RESET + VIOLET + "                        ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "3. " + BLEU + "📅 Ajouter une disponibilité" + RESET + VIOLET + "                 ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "4. " + JAUNE + "⚠️  Ajouter une contrainte" + RESET + VIOLET + "                    ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "5. " + VIOLET + "🚀 Générer le planning" + RESET + VIOLET + "                       ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "6. " + BLANC + "👁️  Voir le planning" + RESET + VIOLET + "                         ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "7. " + JAUNE + "🔔 Voir les notifications" + RESET + VIOLET + "                    ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "8. " + CYAN + "⚙️  Gérer les préférences" + RESET + VIOLET + "                    ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "9. " + ROUGE + "🚗 Signaler un retard" + RESET + VIOLET + "                       ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "10. " + CYAN + "📱 GÉNÉRER QR CODE DU PLANNING" + RESET + VIOLET + "       ║" + RESET);
+        System.out.println(VIOLET + "║ " + RESET + "0. " + ROUGE + "🔌 Se déconnecter" + RESET + VIOLET + "                         ║" + RESET);
+        System.out.println(VIOLET + "╚════════════════════════════════════════╝" + RESET);
+        System.out.print(BLEU + "👉 Votre choix : " + RESET);
     }
 
     private static void traiterChoixUtilisateur(String choix) {
@@ -134,17 +138,26 @@ public class Main {
             case "9":
                 signalerRetardTransport();
                 break;
+            case "10":
+                genererQRCodePlanning();
+                break;
             case "0":
                 currentUserId = null;
-                System.out.println("[OK] Déconnexion réussie");
+                System.out.println(VERT + "[✓] Déconnexion réussie" + RESET);
                 break;
             default:
-                System.out.println("[ERREUR] Choix invalide. Veuillez réessayer.");
+                System.out.println(ROUGE + "[✗] Choix invalide. Veuillez réessayer." + RESET);
         }
+        pressEnterToContinue();
+    }
+
+    private static void pressEnterToContinue() {
+        System.out.print("\n" + BLANC + "Appuyez sur Entrée pour continuer..." + RESET);
+        scanner.nextLine();
     }
 
     private static void registerUser() {
-        System.out.println("\n--- INSCRIPTION D'UN NOUVEL UTILISATEUR ---");
+        System.out.println("\n" + CYAN + "--- INSCRIPTION D'UN NOUVEL UTILISATEUR ---" + RESET);
         System.out.print("Nom : ");
         String name = scanner.nextLine().trim();
 
@@ -159,16 +172,16 @@ public class Main {
 
         Utilisateur user = app.registerUser(name, email, password, level);
         if (user == null) {
-            System.out.println("[ERREUR] L'inscription a échoué. Vérifiez votre email et mot de passe, puis réessayez.");
+            System.out.println(ROUGE + "[✗] L'inscription a échoué." + RESET);
             return;
         }
 
-        System.out.println("[OK] Utilisateur inscrit avec succès !");
-        System.out.println("  Utilisateur créé : " + user.getNom() + " (" + user.getEmail() + ")");
+        System.out.println(VERT + "[✓] Utilisateur inscrit avec succès !" + RESET);
+        System.out.println("  Utilisateur créé : " + JAUNE + user.getNom() + RESET + " (" + user.getEmail() + ")");
     }
 
     private static void loginUser() {
-        System.out.println("\n--- CONNEXION ---");
+        System.out.println("\n" + CYAN + "--- CONNEXION ---" + RESET);
         System.out.print("Email : ");
         String email = scanner.nextLine().trim();
 
@@ -178,21 +191,15 @@ public class Main {
         Utilisateur user = app.loginUser(email, password);
         if (user != null) {
             currentUserId = user.getId();
-            System.out.println("[OK] Connexion réussie !");
-            System.out.println("  Bienvenue " + user.getNom());
+            System.out.println(VERT + "[✓] Connexion réussie !" + RESET);
+            System.out.println("  Bienvenue " + JAUNE + user.getNom() + RESET);
         } else {
-            System.out.println("[ERREUR] Identifiants invalides. Veuillez réessayer ou vous inscrire.");
-        }
-    }
-
-    private static void displayUserDashboard() {
-        if (currentUserId != null) {
-            app.displayUserDashboard(currentUserId);
+            System.out.println(ROUGE + "[✗] Identifiants invalides." + RESET);
         }
     }
 
     private static void addTask() {
-        System.out.println("\n--- AJOUTER UNE TÂCHE ---");
+        System.out.println("\n" + CYAN + "--- AJOUTER UNE TÂCHE ---" + RESET);
         System.out.print("Description : ");
         String description = scanner.nextLine().trim();
 
@@ -201,11 +208,11 @@ public class Main {
         try {
             duration = Integer.parseInt(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("[ERREUR] Durée invalide. Veuillez entrer un nombre positif.");
+            System.out.println(ROUGE + "[✗] Durée invalide." + RESET);
             return;
         }
 
-        System.out.println("Priorité : 1=BASSE, 2=MOYENNE, 3=HAUTE");
+        System.out.println("Priorité : " + VERT + "1=BASSE" + RESET + ", " + JAUNE + "2=MOYENNE" + RESET + ", " + ROUGE + "3=HAUTE" + RESET);
         System.out.print("Choix de priorité : ");
         int priorityChoice;
         try {
@@ -233,29 +240,17 @@ public class Main {
 
         Tache task = app.addTask(currentUserId, description, duration, priority, type);
         if (task == null) {
-            System.out.println("[ERREUR] Impossible de créer la tâche. Vérifiez les informations et réessayez.");
+            System.out.println(ROUGE + "[✗] Impossible de créer la tâche." + RESET);
             return;
         }
 
-        System.out.println("[OK] Tâche ajoutée avec succès !");
-        System.out.println("  Tâche ajoutée : " + task.getDescription() + " (" + task.getDureeMinutes() + " min)");
-
-        Planning currentPlanning = app.getUserPlanning(currentUserId);
-        if (currentPlanning != null) {
-            System.out.println("[INFO] Mise à jour du planning existant avec la nouvelle tâche...");
-            Planning updatedPlanning = app.generateSchedule(currentUserId, currentPlanning.getDateDebut(), currentPlanning.getDateFin());
-            if (updatedPlanning != null) {
-                System.out.println("[OK] Planning mis à jour.");
-                displayPlanningAsTable(updatedPlanning);
-            } else {
-                System.out.println("[ATTENTION] Le planning n'a pas pu être régénéré automatiquement.");
-            }
-        }
+        System.out.println(VERT + "[✓] Tâche ajoutée avec succès !" + RESET);
+        System.out.println("  Tâche ajoutée : " + JAUNE + task.getDescription() + RESET + " (" + task.getDureeMinutes() + " min)");
     }
 
     private static void addAvailability() {
-        System.out.println("\n--- AJOUTER UNE DISPONIBILITÉ ---");
-        System.out.print("Jour (par exemple LUNDI, MARDI) : ");
+        System.out.println("\n" + CYAN + "--- AJOUTER UNE DISPONIBILITÉ ---" + RESET);
+        System.out.print("Jour (LUNDI, MARDI, ...) : ");
         String day = scanner.nextLine().trim().toUpperCase();
 
         LocalTime startTime = promptTime("Heure de début (HH:mm) : ");
@@ -263,7 +258,7 @@ public class Main {
         while (true) {
             endTime = promptTime("Heure de fin (HH:mm) : ");
             if (!endTime.isAfter(startTime)) {
-                System.out.println("[ERREUR] L'heure de fin doit être après l'heure de début.");
+                System.out.println(ROUGE + "[✗] L'heure de fin doit être après l'heure de début." + RESET);
             } else {
                 break;
             }
@@ -271,46 +266,68 @@ public class Main {
 
         Disponibilite availability = app.addAvailability(currentUserId, startTime, endTime, day);
         if (availability == null) {
-            System.out.println("[ERREUR] Impossible d'ajouter la disponibilité. Vérifiez le chevauchement ou la plage horaire.");
+            System.out.println(ROUGE + "[✗] Impossible d'ajouter la disponibilité." + RESET);
             return;
         }
-        System.out.println("[OK] Disponibilité ajoutée avec succès !");
-        System.out.println("  Créneau disponible : " + day + " " + startTime + " - " + endTime);
+        System.out.println(VERT + "[✓] Disponibilité ajoutée avec succès !" + RESET);
+        System.out.println("  Créneau : " + JAUNE + day + " " + startTime + " - " + endTime + RESET);
     }
 
     private static void addConstraint() {
-        System.out.println("\n--- AJOUTER UNE CONTRAINTE ---");
+        System.out.println("\n" + CYAN + "--- AJOUTER UNE CONTRAINTE ---" + RESET);
         System.out.println("Type : 1=RETARD_TRANSPORT, 2=PAUSE_ENTRE_COURS, 3=CHANGEMENT_PLANNING, 4=ACTIVITE_PERSONNELLE");
         System.out.print("Choix du type : ");
-        int typeChoice = Integer.parseInt(scanner.nextLine().trim());
+        int typeChoice;
+        try {
+            typeChoice = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println(ROUGE + "[✗] Type invalide." + RESET);
+            return;
+        }
         TimeSlotType type = TimeSlotType.values()[typeChoice - 1];
 
-        System.out.print("Date et heure (yyyy-MM-dd HH:mm) : ");
-        String dateTimeStr = scanner.nextLine().trim();
-        LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr.replace(" ", "T"));
+        LocalDateTime dateTime = promptDateTime("Date et heure (yyyy-MM-dd HH:mm) : ");
 
         System.out.print("Durée (minutes) : ");
-        int duration = Integer.parseInt(scanner.nextLine().trim());
+        int duration;
+        try {
+            duration = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println(ROUGE + "[✗] Durée invalide." + RESET);
+            return;
+        }
 
         System.out.print("Description : ");
         String description = scanner.nextLine().trim();
 
         Contrainte constraint = app.addConstraint(currentUserId, type, dateTime, duration, description);
         if (constraint == null) {
-            System.out.println("[ERREUR] Impossible d'ajouter la contrainte. Vérifiez les détails et réessayez.");
+            System.out.println(ROUGE + "[✗] Impossible d'ajouter la contrainte." + RESET);
             return;
         }
-        System.out.println("[OK] Contrainte ajoutée avec succès !");
+        System.out.println(VERT + "[✓] Contrainte ajoutée avec succès !" + RESET);
+    }
+
+    private static LocalDateTime promptDateTime(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            try {
+                return LocalDateTime.parse(input.replace(" ", "T"));
+            } catch (DateTimeParseException e) {
+                System.out.println(ROUGE + "[✗] Format invalide. Utilisez yyyy-MM-dd HH:mm" + RESET);
+            }
+        }
     }
 
     private static void signalerRetardTransport() {
-        System.out.println("\n--- SIGNALER UN RETARD DE TRANSPORT ---");
+        System.out.println("\n" + CYAN + "--- SIGNALER UN RETARD DE TRANSPORT ---" + RESET);
         System.out.print("Durée du retard (minutes) : ");
         int delayMinutes;
         try {
             delayMinutes = Integer.parseInt(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("[ERREUR] Retard invalide. Veuillez entrer un nombre positif.");
+            System.out.println(ROUGE + "[✗] Retard invalide." + RESET);
             return;
         }
 
@@ -318,49 +335,45 @@ public class Main {
         String description = scanner.nextLine().trim();
 
         app.handleTransportationDelay(currentUserId, delayMinutes, description);
-        System.out.println("[OK] Retard noté et planning mis à jour si possible.");
+        System.out.println(VERT + "[✓] Retard noté." + RESET);
     }
 
     private static void generateSchedule() {
-        System.out.println("\n--- GÉNÉRER LE PLANNING ---");
+        System.out.println("\n" + CYAN + "--- GÉNÉRER LE PLANNING ---" + RESET);
         LocalDate startDate = promptDate("Date de début (yyyy-MM-dd) : ");
+        LocalDate endDate = promptDate("Date de fin (yyyy-MM-dd) : ");
 
-        LocalDate endDate;
-        while (true) {
-            endDate = promptDate("Date de fin (yyyy-MM-dd) : ");
-            if (endDate.isBefore(startDate)) {
-                System.out.println("[ERREUR] La date de fin doit être le même jour ou après la date de début.");
-            } else {
-                break;
-            }
+        if (endDate.isBefore(startDate)) {
+            System.out.println(ROUGE + "[✗] La date de fin doit être après la date de début." + RESET);
+            return;
         }
 
         Planning planning = app.generateSchedule(currentUserId, startDate, endDate);
         if (planning != null) {
-            System.out.println("[OK] Planning généré avec succès !");
-            System.out.println("  Planning généré avec " + planning.getElements().size() + " tâches");
+            System.out.println(VERT + "[✓] Planning généré avec succès !" + RESET);
+            System.out.println("  Planning avec " + JAUNE + planning.getElements().size() + RESET + " tâches");
         } else {
-            System.out.println("[ERREUR] Impossible de générer le planning. Ajoutez des tâches et des disponibilités d'abord.");
+            System.out.println(ROUGE + "[✗] Impossible de générer le planning." + RESET);
         }
     }
 
     private static void viewPlanning() {
-        System.out.println("\n--- VOIR LE PLANNING ---");
+        System.out.println("\n" + CYAN + "--- VOIR LE PLANNING ---" + RESET);
         Planning planning = app.getUserPlanning(currentUserId);
-        if (planning == null) {
-            System.out.println("Aucun planning trouvé. Générez un planning d'abord.");
+        if (planning == null || planning.getElements().isEmpty()) {
+            System.out.println(JAUNE + "[!] Aucun planning trouvé. Générez-en un d'abord." + RESET);
             return;
         }
-
         displayPlanningAsTable(planning);
     }
 
     private static void displayPlanningAsTable(Planning planning) {
-        System.out.println("Planning ID: " + planning.getId());
-        System.out.println("Period: " + planning.getDateDebut() + " to " + planning.getDateFin());
-        System.out.println("\n+----------------+----------+----------+------------------------------+----------+");
-        System.out.println("| Date           | Start    | End      | Task                         | Status   |");
-        System.out.println("+----------------+----------+----------+------------------------------+----------+");
+        System.out.println("\n" + CYAN + "📅 PLANNING GÉNÉRÉ" + RESET);
+        System.out.println("ID: " + planning.getId());
+        System.out.println("Période: " + planning.getDateDebut() + " → " + planning.getDateFin());
+        System.out.println("\n" + VIOLET + "+----------------+----------+----------+----------------------------------+----------+" + RESET);
+        System.out.println(VIOLET + "| Date           | Début    | Fin      | Tâche                            | Statut   |" + RESET);
+        System.out.println(VIOLET + "+----------------+----------+----------+----------------------------------+----------+" + RESET);
 
         planning.getElements().stream()
                 .sorted((e1, e2) -> e1.getHeureDebut().compareTo(e2.getHeureDebut()))
@@ -369,31 +382,27 @@ public class Main {
                     String start = element.getHeureDebut().toLocalTime().toString();
                     String end = element.getHeureFin().toLocalTime().toString();
                     String task = element.getDescription();
-                    if (task.length() > 30) {
-                        task = task.substring(0, 27) + "...";
-                    }
+                    if (task.length() > 30) task = task.substring(0, 27) + "...";
                     String status = element.getStatut();
-                    System.out.printf("| %-14s | %-8s | %-8s | %-28s | %-8s |%n",
+                    System.out.printf("| %-14s | %-8s | %-8s | %-30s | %-8s |%n",
                             date, start, end, task, status);
                 });
 
-        System.out.println("+----------------+----------+----------+------------------------------+----------+");
+        System.out.println(VIOLET + "+----------------+----------+----------+----------------------------------+----------+" + RESET);
     }
 
     private static void viewNotifications() {
-        System.out.println("\n--- NOTIFICATIONS ---");
+        System.out.println("\n" + CYAN + "--- NOTIFICATIONS ---" + RESET);
         List<Notification> notifications = app.getUnreadNotifications(currentUserId);
 
         if (notifications.isEmpty()) {
-            System.out.println("Aucune notification non lue.");
+            System.out.println(VERT + "[✓] Aucune notification non lue." + RESET);
             return;
         }
 
-        System.out.println("Notifications non lues : " + notifications.size());
-        System.out.println("-".repeat(80));
-
+        System.out.println("Notifications non lues : " + JAUNE + notifications.size() + RESET);
         for (Notification notif : notifications) {
-            System.out.println("• " + notif.getTitre());
+            System.out.println("• " + CYAN + notif.getTitre() + RESET);
             System.out.println("  Message : " + notif.getMessage());
             System.out.println("  Heure : " + notif.getDateHeure());
             System.out.println();
@@ -401,115 +410,93 @@ public class Main {
     }
 
     private static void managePreferences() {
-        System.out.println("\n--- GÉRER LES PRÉFÉRENCES ---");
+        System.out.println("\n" + CYAN + "--- GÉRER LES PRÉFÉRENCES ---" + RESET);
         Preference pref = app.getPreferenceService().obtenirPreference(currentUserId);
 
         System.out.println("Préférences actuelles :");
-        System.out.println("1. Notifications : " + (pref.isNotificationsActivees() ? "Activées" : "Désactivées"));
-        System.out.println("2. Temps de rappel : " + pref.getMinutesRappelAvant() + " minutes avant");
+        System.out.println("1. Notifications : " + (pref.isNotificationsActivees() ? VERT + "Activées" + RESET : ROUGE + "Désactivées" + RESET));
+        System.out.println("2. Temps de rappel : " + pref.getMinutesRappelAvant() + " minutes");
         System.out.println("3. Thème : " + pref.getTheme());
         System.out.println("4. Langue : " + pref.getLanguePrefere());
-        System.out.println("5. Objectif d'étude journalier : " + (pref.getTempsEtudeIdealParJour() / 60) + " heures");
-        System.out.println("6. Profil d'énergie matin : " + pref.getEnergieMatin());
-        System.out.println("7. Profil d'énergie après-midi : " + pref.getEnergieApresMidi());
-        System.out.println("8. Profil d'énergie soir : " + pref.getEnergieSoir());
-        System.out.println("\n0. Retour");
+        System.out.println("5. Objectif d'étude : " + (pref.getTempsEtudeIdealParJour() / 60) + " heures");
+        System.out.println("6. Énergie matin : " + pref.getEnergieMatin());
+        System.out.println("7. Énergie après-midi : " + pref.getEnergieApresMidi());
+        System.out.println("8. Énergie soir : " + pref.getEnergieSoir());
+        System.out.println("0. Retour");
 
         System.out.print("Choix à modifier : ");
         String choice = scanner.nextLine().trim();
 
         switch (choice) {
             case "1":
-                boolean enabled = pref.isNotificationsActivees();
-                pref.setNotificationsActivees(!enabled);
-                System.out.println("[OK] Notifications " + (!enabled ? "activées" : "désactivées"));
+                pref.setNotificationsActivees(!pref.isNotificationsActivees());
+                System.out.println(VERT + "[✓] Notifications " + (pref.isNotificationsActivees() ? "activées" : "désactivées") + RESET);
                 break;
             case "2":
                 System.out.print("Temps de rappel (minutes) : ");
-                int minutes = Integer.parseInt(scanner.nextLine().trim());
-                pref.setMinutesRappelAvant(minutes);
-                System.out.println("[OK] Temps de rappel mis à jour");
+                pref.setMinutesRappelAvant(Integer.parseInt(scanner.nextLine().trim()));
+                System.out.println(VERT + "[✓] Mis à jour" + RESET);
                 break;
             case "3":
                 System.out.print("Thème (CLAIR/SOMBRE) : ");
-                String theme = scanner.nextLine().trim();
-                pref.setTheme(theme);
-                System.out.println("[OK] Thème mis à jour");
+                pref.setTheme(scanner.nextLine().trim());
+                System.out.println(VERT + "[✓] Thème mis à jour" + RESET);
                 break;
             case "4":
                 System.out.print("Langue (FRANCAIS/ARABE/ANGLAIS) : ");
-                String lang = scanner.nextLine().trim();
-                pref.setLanguePrefere(lang);
-                System.out.println("[OK] Langue mise à jour");
+                pref.setLanguePrefere(scanner.nextLine().trim());
+                System.out.println(VERT + "[✓] Langue mise à jour" + RESET);
                 break;
             case "5":
-                System.out.print("Objectif d'étude journalier (heures) : ");
-                int hours = Integer.parseInt(scanner.nextLine().trim());
-                pref.setTempsEtudeIdealParJour(hours * 60);
-                System.out.println("[OK] Objectif d'étude mis à jour");
+                System.out.print("Objectif d'étude (heures) : ");
+                pref.setTempsEtudeIdealParJour(Integer.parseInt(scanner.nextLine().trim()) * 60);
+                System.out.println(VERT + "[✓] Objectif mis à jour" + RESET);
                 break;
             case "6":
                 System.out.print("Énergie matin (ELEVÉ/MOYEN/FAIBLE) : ");
-                String morningEnergy = scanner.nextLine().trim().toUpperCase();
-                pref.setEnergieMatin(morningEnergy);
-                System.out.println("[OK] Profil d'énergie matin mis à jour");
+                pref.setEnergieMatin(scanner.nextLine().trim().toUpperCase());
                 break;
             case "7":
                 System.out.print("Énergie après-midi (ELEVÉ/MOYEN/FAIBLE) : ");
-                String afternoonEnergy = scanner.nextLine().trim().toUpperCase();
-                pref.setEnergieApresMidi(afternoonEnergy);
-                System.out.println("[OK] Profil d'énergie après-midi mis à jour");
+                pref.setEnergieApresMidi(scanner.nextLine().trim().toUpperCase());
                 break;
             case "8":
                 System.out.print("Énergie soir (ELEVÉ/MOYEN/FAIBLE) : ");
-                String eveningEnergy = scanner.nextLine().trim().toUpperCase();
-                pref.setEnergieSoir(eveningEnergy);
-                System.out.println("[OK] Profil d'énergie soir mis à jour");
+                pref.setEnergieSoir(scanner.nextLine().trim().toUpperCase());
                 break;
             default:
-                System.out.println("Retour au menu utilisateur.");
+                System.out.println("Retour au menu.");
         }
-
         app.getPreferenceService().sauvegarderPreference(pref);
     }
 
     private static void afficherTableauBordComplet() {
-        System.out.println("\n=== TABLEAU DE BORD ET STATISTIQUES ===");
+        System.out.println("\n" + VIOLET + GRAS + "╔══════════════════════════════════════════╗" + RESET);
+        System.out.println(VIOLET + GRAS + "║     📊 TABLEAU DE BORD & STATISTIQUES     ║" + RESET);
+        System.out.println(VIOLET + GRAS + "╚══════════════════════════════════════════╝" + RESET);
 
-        // Afficher le tableau de bord principal
         app.displayUserDashboard(currentUserId);
 
-        // Afficher les statistiques d'utilisation
         List<Tache> toutesTaches = app.getTaskService().obtenirTachesUtilisateur(currentUserId);
         int total = toutesTaches.size();
         int terminees = (int) toutesTaches.stream().filter(Tache::isCompletee).count();
-        int enAttente = total - terminees;
-        double tauxCompletion = total > 0 ? (double) terminees / total * 100 : 0.0;
+        double taux = total > 0 ? (double) terminees / total * 100 : 0.0;
 
-        System.out.println("\n--- STATISTIQUES DE TÂCHES ---");
-        System.out.println("Tâches totales : " + total);
-        System.out.println("Tâches terminées : " + terminees);
-        System.out.println("Tâches en attente : " + enAttente);
-        System.out.printf("Taux de complétion : %.2f%%\n", tauxCompletion);
-
-        Planning planning = app.getUserPlanning(currentUserId);
-        System.out.println("\n--- RÉCAPITULATIF DU PLANNING ---");
-        if (planning != null) {
-            System.out.println("Planning actuel : " + planning.getId());
-            System.out.println("Période : " + planning.getDateDebut() + " à " + planning.getDateFin());
-            System.out.println("Tâches planifiées : " + planning.getElements().size());
-        } else {
-            System.out.println("Aucun planning disponible pour le moment.");
-        }
+        System.out.println("\n" + CYAN + "--- STATISTIQUES DE TÂCHES ---" + RESET);
+        System.out.println("📝 Tâches totales    : " + JAUNE + total + RESET);
+        System.out.println("✅ Tâches terminées  : " + VERT + terminees + RESET);
+        System.out.println("⏳ Tâches en attente : " + ROUGE + (total - terminees) + RESET);
+        System.out.printf("📈 Taux de complétion : " + (taux == 100 ? VERT : taux > 50 ? JAUNE : ROUGE) + "%.2f%%" + RESET + "\n", taux);
     }
+
     private static LocalDate promptDate(String prompt) {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().trim();
             try {
                 return LocalDate.parse(input);
-            } catch (Exception e) {
-                System.out.println("[ERREUR] Format de date invalide. Utilisez yyyy-MM-dd.");
+            } catch (DateTimeParseException e) {
+                System.out.println(ROUGE + "[✗] Format invalide (yyyy-MM-dd)" + RESET);
             }
         }
     }
@@ -520,8 +507,44 @@ public class Main {
             String input = scanner.nextLine().trim();
             try {
                 return LocalTime.parse(input);
-            } catch (Exception e) {
-                System.out.println("[ERREUR] Format horaire invalide. Utilisez HH:mm.");
+            } catch (DateTimeParseException e) {
+                System.out.println(ROUGE + "[✗] Format invalide (HH:mm)" + RESET);
             }
         }
-    }}
+    }
+
+    /**
+     * Génère un QR code du planning actuel
+     */
+    private static void genererQRCodePlanning() {
+        System.out.println("\n" + CYAN + "--- GÉNÉRER QR CODE DU PLANNING ---" + RESET);
+        
+        Planning planning = app.getUserPlanning(currentUserId);
+        if (planning == null || planning.getElements().isEmpty()) {
+            System.out.println(ROUGE + "[✗] Aucun planning disponible. Générez-en un d'abord." + RESET);
+            return;
+        }
+        
+        Utilisateur user = app.getUserService().obtenirUtilisateur(currentUserId);
+        if (user == null) {
+            System.out.println(ROUGE + "[✗] Utilisateur non trouvé." + RESET);
+            return;
+        }
+        
+        System.out.println(JAUNE + "⏳ Génération du QR code en cours..." + RESET);
+        
+        String qrCodePath = qrCodeService.genererQRCodePlanning(planning, user);
+        
+        if (qrCodePath != null) {
+            System.out.println(VERT + "[✓] QR Code généré avec succès!" + RESET);
+            qrCodeService.afficherInstructions(qrCodePath);
+            qrCodeService.afficherQRCode(qrCodePath);
+            
+            System.out.println(CYAN + "📌 Fichiers générés:" + RESET);
+            System.out.println("  • QR Code: " + qrCodePath);
+            System.out.println("  • Planning HTML: plannings_html/" + planning.getId() + ".html");
+        } else {
+            System.out.println(ROUGE + "[✗] Erreur lors de la génération du QR code." + RESET);
+        }
+    }
+}
