@@ -44,6 +44,15 @@
   `tauxCompletion = (tâchesTerminées / totalTâches) × 100`  
   avec gestion du cas `totalTâches = 0`
 - Documentation des **prompts IA** utilisés (dans le rapport)
+- 
+## 🚀 Bonus technique
+
+| Fonctionnalité | Description | Statut |
+|----------------|-------------|--------|
+| **Génération HTML** | Planning en page web responsive | ✅ Fonctionnel |
+| **Génération QR code** | Crée un QR code vers l'URL locale | ✅ Fonctionnel |
+| **Lien QR → HTML** | QR pointe bien vers la bonne page | ✅ Fait |
+| **Accès mobile réel** | Nécessite un serveur HTTP | 🔄 À finaliser |
 
 ### 4. 🗃️ Gestion de version (Git & GitHub)
 
